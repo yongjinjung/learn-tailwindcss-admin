@@ -4,15 +4,216 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tailwind CSS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-slate-100">
     <div class="flex h-screen">
-      <aside class="bg-slate-800 w-64 text-white"></aside>
+      <aside
+        id="sideBar"
+        class="bg-slate-800 w-64 text-white p-6 lg:block -translate-x-full lg:translate-x-0 absolute lg:relative transition-transform duration-300 h-full z-50"
+      >
+        <div class="flex flex-col justify-start space-y-10">
+          <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold"><a href="#"> 대시보드 </a></h1>
+            <button id="closeSidebar" class="text-white lg:hidden">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <nav class="flex flex-col justify-start space-y-5">
+            <a
+              href="#"
+              class="text-lg hover:text-sky-500 hover:scale-105 transition duration-300"
+              ><i class="fas fa-house mr-3"></i>홈</a
+            >
+            <a
+              href="#"
+              class="text-lg hover:text-sky-500 hover:scale-105 transition duration-300"
+              ><i class="fas fa-chart-bar mr-3"></i>분석</a
+            >
+            <a
+              href="#"
+              class="text-lg hover:text-sky-500 hover:scale-105 transition duration-300"
+              ><i class="fas fa-list-check mr-3"></i>작업 관리</a
+            >ß
+            <a
+              href="#"
+              class="text-lg hover:text-sky-500 hover:scale-105 transition duration-300"
+              ><i class="fa-solid fa-gears mr-3"></i>설정</a
+            >
+          </nav>
+        </div>
+      </aside>
       <div class="flex-1 flex flex-col">
-        <header class="h-16 bg-white border-b-4 border-indigo-600"></header>
-        <main class="bg-slate-200 flex-1"></main>
+        <header
+          class="h-16 bg-white border-b-4 border-indigo-600 overflow-hidden py-2 px-6"
+        >
+          <div class="flex flex-row justify-between items-center">
+            <button
+              id="sidebarToggle"
+              class="text-slate-500 lg:hidden p-2 mr-4"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="flex-1 relative">
+              <span class="absolute left-[10px] inset-y-0 flex items-center">
+                <i class="fas fa-magnifying-glass text-gray-500"></i>
+              </span>
+              <input
+                class="outline-none h-10 w-64 pl-10 pr-4 rounded-md"
+                type="text"
+                placeholder="검색"
+              />
+            </div>
+            <div class="flex flex-row justify-end items-center space-x-2">
+              <div>
+                <button>
+                  <i class="fa-solid fa-bell text-2xl"></i>
+                </button>
+              </div>
+              <div>
+                <img
+                  class="w-10 h-10 rounded-full border"
+                  src="https://api.dicebear.com/9.x/adventurer/svg?seed=Brian"
+                  alt="avatar"
+                />
+              </div>
+            </div>
+          </div>
+        </header>
+        <main class="bg-slate-200 flex-1">
+          <div class="container mx-auto py-8 px-6">
+            <h3 class="text-gray-700 text-3xl font-medium">대시보드</h3>
+            <div
+              class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              <div class="flex items-center bg-white rounded-md px-5 py-6">
+                <div
+                  class="flex flex-row justify-center items-center rounded-full bg-indigo-600 w-12 h-12 bg-opacity-75"
+                >
+                  <i class="fas fa-users text-white"></i>
+                </div>
+                <div class="ml-5">
+                  <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
+                  <div class="text-gray-500">신규</div>
+                </div>
+              </div>
+              <div class="flex items-center bg-white rounded-md px-5 py-6">
+                <div
+                  class="flex flex-row justify-center items-center rounded-full bg-green-600 w-12 h-12 bg-opacity-75"
+                >
+                  <i class="fas fa-users text-white"></i>
+                </div>
+                <div class="ml-5">
+                  <h4 class="text-2xl font-semibold text-gray-700">200,282</h4>
+                  <div class="text-gray-500">총 주문</div>
+                </div>
+              </div>
+              <div class="flex items-center bg-white rounded-md px-5 py-6">
+                <div
+                  class="flex flex-row justify-center items-center rounded-full bg-pink-600 w-12 h-12 bg-opacity-75"
+                >
+                  <i class="fas fa-users text-white"></i>
+                </div>
+                <div class="ml-5">
+                  <h4 class="text-2xl font-semibold text-gray-700">215,282</h4>
+                  <div class="text-gray-500">총 수익</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <div
+                class="shadow overflow-hidden rounded-lg border-b border-slate-200"
+              >
+                <table class="w-full">
+                  <thead>
+                    <tr
+                      class="bg-slate-50 text-xs text-left text-slate-500 border-b border-gray-200"
+                    >
+                      <th class="px-6 py-3 font-medium">작업</th>
+                      <th class="px-6 py-3 font-medium">담당자</th>
+                      <th class="px-6 py-3 font-medium">마감일</th>
+                      <th class="px-6 py-3 font-medium">상태</th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white text-gray-900 text-sm font-medium">
+                    <tr class="border-b border-slate-200">
+                      <td class="px-6 py-4 font-medium">
+                        새 랜딩 페이지 디자인
+                      </td>
+                      <td class="px-6 py-4 font-medium">김철수</td>
+                      <td class="px-6 py-4 font-medium">2024-06-30</td>
+                      <td class="px-6 py-4 font-medium">
+                        <span
+                          class="px-2 bg-green-100 text-green-800 py-0.5 text-xs rounded-md"
+                          >진행중</span
+                        >
+                      </td>
+                    </tr>
+                    <tr class="border-b border-slate-200">
+                      <td class="px-6 py-4 font-medium">
+                        새 랜딩 페이지 디자인
+                      </td>
+                      <td class="px-6 py-4 font-medium">김철수</td>
+                      <td class="px-6 py-4 font-medium">2024-06-30</td>
+                      <td class="px-6 py-4 font-medium">
+                        <span
+                          class="px-2 bg-green-100 text-green-800 py-0.5 text-xs rounded-md"
+                          >진행중</span
+                        >
+                      </td>
+                    </tr>
+                    <tr class="border-b border-slate-200">
+                      <td class="px-6 py-4 font-medium">
+                        새 랜딩 페이지 디자인
+                      </td>
+                      <td class="px-6 py-4 font-medium">김철수</td>
+                      <td class="px-6 py-4 font-medium">2024-06-30</td>
+                      <td class="px-6 py-4 font-medium">
+                        <span
+                          class="px-2 bg-green-100 text-green-800 py-0.5 text-xs rounded-md"
+                          >진행중</span
+                        >
+                      </td>
+                    </tr>
+                    <tr class="border-b border-slate-200">
+                      <td class="px-6 py-4 font-medium">
+                        새 랜딩 페이지 디자인
+                      </td>
+                      <td class="px-6 py-4 font-medium">김철수</td>
+                      <td class="px-6 py-4 font-medium">2024-06-30</td>
+                      <td class="px-6 py-4 font-medium">
+                        <span
+                          class="px-2 bg-green-100 text-green-800 py-0.5 text-xs rounded-md"
+                          >진행중</span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
+    <script>
+      const sideBarToggle = document.querySelector('#sidebarToggle');
+      const closeSidebar = document.querySelector('#closeSidebar');
+
+      sideBarToggle.addEventListener('click', function () {
+        const sideBar = document.getElementById('sideBar');
+        sideBar.classList.toggle('-translate-x-full');
+      });
+
+      closeSidebar.addEventListener('click', function () {
+        const sideBar = document.getElementById('sideBar');
+        sideBar.classList.toggle('-translate-x-full');
+      });
+    </script>
   </body>
 </html>
